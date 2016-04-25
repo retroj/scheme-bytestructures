@@ -1,0 +1,7 @@
+;; -*- scheme -*-
+
+
+((depends r7rs
+          r6rs.bytevectors
+          srfi-60
+          format))

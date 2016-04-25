@@ -1,0 +1,88 @@
+;; -*- scheme -*-
+
+;; need srfi 28, 60, (rnrs bytevectors)
+
+(use posix)
+
+(change-directory "r7")
+
+;; utils
+
+(compile -s -O3 -J -o bytestructures.r7.utils.so
+         -X r7rs -R r7rs
+         utils.sld)
+
+(compile -s -O3 bytestructures.r7.utils.import.scm)
+
+;; base (needs utils)
+
+(compile -s -O3 -J -o bytestructures.r7.base.so
+         -X r7rs -R r7rs
+         base.sld)
+
+(compile -s -O3 bytestructures.r7.base.import.scm)
+
+;; bytevectors (needs (rnrs bytevectors))
+
+(compile -s -O3 -J -o bytestructures.r7.bytevectors.so
+         -X r7rs -R r7rs
+         bytevectors.sld)
+
+(compile -s -O3 bytestructures.r7.bytevectors.import.scm)
+
+;; explicit-endianness (needs utils, bytevectors)
+
+(compile -s -O3 -J -o bytestructures.r7.explicit-endianness.so
+         -X r7rs -R r7rs
+         explicit-endianness.sld)
+
+(compile -s -O3 bytestructures.r7.explicit-endianness.import.scm)
+
+;; numeric-all (needs utils base bytevectors explicit-endianness)
+
+(compile -s -O3 -J -o bytestructures.r7.numeric-all.so
+         -X r7rs -R r7rs
+         numeric-all.sld)
+
+(compile -s -O3
+         bytestructures.r7.numeric-all.import.scm)
+
+;; numeric-metadata (needs numeric-all)
+
+(compile -v -s -O3 -J -o bytestructures.r7.numeric-metadata.so
+         -X r7rs -R r7rs
+         numeric-metadata.sld)
+
+;; (compile -s -O3 bytestructures.r7.numeric-metadata.import.scm)
+
+;; numeric (needs numeric-all)
+
+;; (compile -s -O3 -J -o bytestructures.r7.numeric.so
+;;          -X r7rs -R r7rs
+;;          numeric.sld)
+
+;; (compile -s -O3 bytestructures.r7.numeric.import.scm)
+
+;; bitfields (needs utils, base, numeric-metadata)
+
+;; struct (needs utils, base, bitfields)
+
+;; union (needs utils, base)
+
+(compile -s -O3 -J -o bytestructures.r7.union.so
+         -X r7rs -R r7rs
+         union.sld)
+
+(compile -s -O3
+         bytestructures.r7.union.import.scm)
+
+;; vector (needs utils, base)
+
+(compile -s -O3 -J -o bytestructures.r7.vector.so
+         -X r7rs -R r7rs
+         vector.sld)
+
+(compile -s -O3
+         bytestructures.r7.vector.import.scm)
+
+;; r7 (needs base, vector, struct, union, numeric)
