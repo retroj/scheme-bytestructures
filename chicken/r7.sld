@@ -1,0 +1,12 @@
+(define-library (bytestructures r7)
+  (import
+   (bytestructures r7 base)
+   (bytestructures r7 vector)
+   (bytestructures r7 struct)
+   (bytestructures r7 union)
+   (bytestructures r7 numeric))
+  (include-library-declarations "base.exports.sld")
+  (include-library-declarations "vector.exports.sld")
+  (include-library-declarations "struct.exports.sld")
+  (include-library-declarations "union.exports.sld")
+  (include-library-declarations "numeric.exports.sld"))
