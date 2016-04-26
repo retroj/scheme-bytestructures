@@ -4,7 +4,7 @@
 
 (use posix)
 
-(change-directory "r7")
+(change-directory "../r7")
 
 ;; utils
 
@@ -44,28 +44,39 @@
          -X r7rs -R r7rs
          numeric-all.sld)
 
-(compile -s -O3
-         bytestructures.r7.numeric-all.import.scm)
+(compile -s -O3 bytestructures.r7.numeric-all.import.scm)
 
 ;; numeric-metadata (needs numeric-all)
 
-(compile -v -s -O3 -J -o bytestructures.r7.numeric-metadata.so
+(compile -s -O3 -J -o bytestructures.r7.numeric-metadata.so
          -X r7rs -R r7rs
          numeric-metadata.sld)
 
-;; (compile -s -O3 bytestructures.r7.numeric-metadata.import.scm)
+(compile -s -O3 bytestructures.r7.numeric-metadata.import.scm)
 
 ;; numeric (needs numeric-all)
 
-;; (compile -s -O3 -J -o bytestructures.r7.numeric.so
-;;          -X r7rs -R r7rs
-;;          numeric.sld)
+(compile -s -O3 -J -o bytestructures.r7.numeric.so
+         -X r7rs -R r7rs
+         numeric.sld)
 
-;; (compile -s -O3 bytestructures.r7.numeric.import.scm)
+(compile -s -O3 bytestructures.r7.numeric.import.scm)
 
 ;; bitfields (needs utils, base, numeric-metadata)
 
+(compile -s -O3 -J -o bytestructures.r7.bitfields.so
+         -X r7rs -R r7rs
+         bitfields.sld)
+
+(compile -s -O3 bytestructures.r7.bitfields.import.scm)
+
 ;; struct (needs utils, base, bitfields)
+
+(compile -s -O3 -J -o bytestructures.r7.struct.so
+         -X r7rs -R r7rs
+         struct.sld)
+
+(compile -s -O3 bytestructures.r7.struct.import.scm)
 
 ;; union (needs utils, base)
 
@@ -73,8 +84,7 @@
          -X r7rs -R r7rs
          union.sld)
 
-(compile -s -O3
-         bytestructures.r7.union.import.scm)
+(compile -s -O3 bytestructures.r7.union.import.scm)
 
 ;; vector (needs utils, base)
 
@@ -82,7 +92,14 @@
          -X r7rs -R r7rs
          vector.sld)
 
-(compile -s -O3
-         bytestructures.r7.vector.import.scm)
+(compile -s -O3 bytestructures.r7.vector.import.scm)
 
 ;; r7 (needs base, vector, struct, union, numeric)
+
+(change-directory "..")
+
+(compile -s -O3 -J -o bytestructures.r7.so
+         -X r7rs -R r7rs -I r7
+         r7.sld)
+
+#;(compile -s -O3 bytestructures.r7.scm)

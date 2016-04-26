@@ -1,7 +1,7 @@
 ;; -*- scheme -*-
 
 
-((depends r7rs
+((depends r7rs #;(r7rs 0.0.3)
           r6rs.bytevectors
           srfi-60
           format))
