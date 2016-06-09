@@ -1,1 +1,3 @@
 *.srfi64.log
+*.so
+*.import.*
