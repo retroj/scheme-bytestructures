@@ -106,51 +106,39 @@
 
 
 
-(install-extension 'bytestructures.r7.utils
-  '("bytestructures.r7.utils.so"
-    "bytestructures.r7.utils.import.so")
-  '())
 (install-extension 'bytestructures.r7.base
-  '("bytestructures.r7.base.so"
+  '("bytestructures.r7.utils.so"
+    "bytestructures.r7.utils.import.so"
+    "bytestructures.r7.base.so"
     "bytestructures.r7.base.import.so")
-  '())
-(install-extension 'bytestructures.r7.bytevectors
-  '("bytestructures.r7.bytevectors.so"
-    "bytestructures.r7.bytevectors.import.so")
-  '())
-(install-extension 'bytestructures.r7.explicit-endianness
-  '("bytestructures.r7.explicit-endianness.so"
-    "bytestructures.r7.explicit-endianness.import.so")
-  '())
-(install-extension 'bytestructures.r7.numeric-all
-  '("bytestructures.r7.numeric-all.so"
-    "bytestructures.r7.numeric-all.import.so")
-  '())
-(install-extension 'bytestructures.r7.numeric-metadata
-  '("bytestructures.r7.numeric-metadata.so"
-    "bytestructures.r7.numeric-metadata.import.so")
-  '())
+  `((version ,version)))
 (install-extension 'bytestructures.r7.numeric
-  '("bytestructures.r7.numeric.so"
+  '("bytestructures.r7.bytevectors.so"
+    "bytestructures.r7.bytevectors.import.so"
+    "bytestructures.r7.explicit-endianness.so"
+    "bytestructures.r7.explicit-endianness.import.so"
+    "bytestructures.r7.numeric-all.so"
+    "bytestructures.r7.numeric-all.import.so"
+    "bytestructures.r7.numeric-metadata.so"
+    "bytestructures.r7.numeric-metadata.import.so"
+    "bytestructures.r7.numeric.so"
     "bytestructures.r7.numeric.import.so")
-  '())
-(install-extension 'bytestructures.r7.bitfields
-  '("bytestructures.r7.bitfields.so"
-    "bytestructures.r7.bitfields.import.so")
-  '())
+  `((version ,version)))
 (install-extension 'bytestructures.r7.struct
-  '("bytestructures.r7.struct.so"
+  '("bytestructures.r7.bitfields.so"
+    "bytestructures.r7.bitfields.import.so"
+    "bytestructures.r7.struct.so"
     "bytestructures.r7.struct.import.so")
-  '())
+  `((version ,version)))
 (install-extension 'bytestructures.r7.union
   '("bytestructures.r7.union.so"
     "bytestructures.r7.union.import.so")
-  '())
+  `((version ,version)))
 (install-extension 'bytestructures.r7.vector
   '("bytestructures.r7.vector.so"
     "bytestructures.r7.vector.import.so")
-  '())
+  `((version ,version)))
 (install-extension 'bytestructures.r7
   '("bytestructures.r7.so"
     "bytestructures.r7.import.so")
-  '())
+  `((version ,version)))

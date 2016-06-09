@@ -1,7 +1,13 @@
 ;; -*- scheme -*-
 
 
-((depends r7rs #;(r7rs 0.0.3)
+((author "Taylan Ulrich Bayırlı/Kammer")
+ (synopsis "Structured access to bytevector contents")
+ (license "GPL-3")
+ (category data)
+ #;(files )
+ (depends (r7rs 0.0.3)
           r6rs.bytevectors
           srfi-60
-          format))
+          format
+          posix))
