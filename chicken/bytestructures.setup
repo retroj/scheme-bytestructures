@@ -4,9 +4,9 @@
 
 (use posix)
 
-(run (cp r7.sld ../r7/))
+(run (cp r7.sld ../bytestructures/r7/))
 
-(change-directory "../r7")
+(change-directory "../bytestructures/r7")
 
 ;; utils
 
