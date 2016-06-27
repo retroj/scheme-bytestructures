@@ -7,7 +7,7 @@
  (category data)
  #;(files )
  (depends (r7rs 0.0.3)
-          r6rs.bytevectors
+          r6rs-bytevectors
           srfi-60
           format
           posix))
