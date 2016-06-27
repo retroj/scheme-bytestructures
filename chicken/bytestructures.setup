@@ -105,6 +105,7 @@
 (compile -s -O3 bytestructures.r7.import.scm)
 
 
+(define version "0.0.0")
 
 (install-extension 'bytestructures.r7.base
   '("bytestructures.r7.utils.so"
