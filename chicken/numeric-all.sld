@@ -1,0 +1,11 @@
+(define-library (bytestructures numeric-all)
+  (import
+   (scheme base)
+   (scheme complex)
+   (bytestructures utils)
+   (bytestructures base)
+   (bytestructures bytevectors)
+   (bytestructures explicit-endianness))
+  (include-library-declarations "r7/numeric.exports.sld")
+  (include-library-declarations "r7/numeric-metadata.exports.sld")
+  (include "body/numeric.scm"))

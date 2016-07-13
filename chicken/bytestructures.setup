@@ -4,142 +4,138 @@
 
 (use posix)
 
-(run (cp r7.sld ../bytestructures/r7/))
-
-(change-directory "../bytestructures/r7")
-
 ;; utils
 
-(compile -s -O3 -J -o bytestructures.r7.utils.so
+(compile -s -O3 -J -o bytestructures.utils.so
          -X r7rs -R r7rs
          utils.sld)
 
-(compile -s -O3 bytestructures.r7.utils.import.scm)
+(compile -s -O3 bytestructures.utils.import.scm)
 
 ;; base (needs utils)
 
-(compile -s -O3 -J -o bytestructures.r7.base.so
+(compile -s -O3 -J -o bytestructures.base.so
          -X r7rs -R r7rs
          base.sld)
 
-(compile -s -O3 bytestructures.r7.base.import.scm)
+(compile -s -O3 bytestructures.base.import.scm)
 
 ;; bytevectors (needs (rnrs bytevectors))
 
-(compile -s -O3 -J -o bytestructures.r7.bytevectors.so
+(compile -s -O3 -J -o bytestructures.bytevectors.so
          -X r7rs -R r7rs
          bytevectors.sld)
 
-(compile -s -O3 bytestructures.r7.bytevectors.import.scm)
+(compile -s -O3 bytestructures.bytevectors.import.scm)
 
 ;; explicit-endianness (needs utils, bytevectors)
 
-(compile -s -O3 -J -o bytestructures.r7.explicit-endianness.so
+(compile -s -O3 -J -o bytestructures.explicit-endianness.so
          -X r7rs -R r7rs
          explicit-endianness.sld)
 
-(compile -s -O3 bytestructures.r7.explicit-endianness.import.scm)
+(compile -s -O3 bytestructures.explicit-endianness.import.scm)
 
 ;; numeric-all (needs utils base bytevectors explicit-endianness)
 
-(compile -s -O3 -J -o bytestructures.r7.numeric-all.so
+(compile -s -O3 -J -o bytestructures.numeric-all.so
          -X r7rs -R r7rs
          numeric-all.sld)
 
-(compile -s -O3 bytestructures.r7.numeric-all.import.scm)
+(compile -s -O3 bytestructures.numeric-all.import.scm)
 
 ;; numeric-metadata (needs numeric-all)
 
-(compile -s -O3 -J -o bytestructures.r7.numeric-metadata.so
+(compile -s -O3 -J -o bytestructures.numeric-metadata.so
          -X r7rs -R r7rs
          numeric-metadata.sld)
 
-(compile -s -O3 bytestructures.r7.numeric-metadata.import.scm)
+(compile -s -O3 bytestructures.numeric-metadata.import.scm)
 
 ;; numeric (needs numeric-all)
 
-(compile -s -O3 -J -o bytestructures.r7.numeric.so
+(compile -s -O3 -J -o bytestructures.numeric.so
          -X r7rs -R r7rs
          numeric.sld)
 
-(compile -s -O3 bytestructures.r7.numeric.import.scm)
+(compile -s -O3 bytestructures.numeric.import.scm)
 
 ;; bitfields (needs utils, base, numeric-metadata)
 
-(compile -s -O3 -J -o bytestructures.r7.bitfields.so
+(compile -s -O3 -J -o bytestructures.bitfields.so
          -X r7rs -R r7rs
          bitfields.sld)
 
-(compile -s -O3 bytestructures.r7.bitfields.import.scm)
+(compile -s -O3 bytestructures.bitfields.import.scm)
 
 ;; struct (needs utils, base, bitfields)
 
-(compile -s -O3 -J -o bytestructures.r7.struct.so
+(compile -s -O3 -J -o bytestructures.struct.so
          -X r7rs -R r7rs
          struct.sld)
 
-(compile -s -O3 bytestructures.r7.struct.import.scm)
+(compile -s -O3 bytestructures.struct.import.scm)
 
 ;; union (needs utils, base)
 
-(compile -s -O3 -J -o bytestructures.r7.union.so
+(compile -s -O3 -J -o bytestructures.union.so
          -X r7rs -R r7rs
          union.sld)
 
-(compile -s -O3 bytestructures.r7.union.import.scm)
+(compile -s -O3 bytestructures.union.import.scm)
 
 ;; vector (needs utils, base)
 
-(compile -s -O3 -J -o bytestructures.r7.vector.so
+(compile -s -O3 -J -o bytestructures.vector.so
          -X r7rs -R r7rs
          vector.sld)
 
-(compile -s -O3 bytestructures.r7.vector.import.scm)
+(compile -s -O3 bytestructures.vector.import.scm)
 
-;; r7 (needs base, vector, struct, union, numeric)
+;; bytestructures (needs base, vector, struct, union, numeric)
 
-(compile -s -O3 -J -o bytestructures.r7.so
+(compile -s -O3 -J -o bytestructures.so
          -X r7rs -R r7rs
-         r7.sld)
+         bytestructures.sld)
 
-(compile -s -O3 bytestructures.r7.import.scm)
+(compile -s -O3 bytestructures.import.scm)
 
 
 (define version "0.0.0")
 
-(install-extension 'bytestructures.r7.base
-  '("bytestructures.r7.utils.so"
-    "bytestructures.r7.utils.import.so"
-    "bytestructures.r7.base.so"
-    "bytestructures.r7.base.import.so")
+(install-extension 'bytestructures.base
+  '("bytestructures.utils.so"
+    "bytestructures.utils.import.so"
+    "bytestructures.base.so"
+    "bytestructures.base.import.so")
   `((version ,version)))
-(install-extension 'bytestructures.r7.numeric
-  '("bytestructures.r7.bytevectors.so"
-    "bytestructures.r7.bytevectors.import.so"
-    "bytestructures.r7.explicit-endianness.so"
-    "bytestructures.r7.explicit-endianness.import.so"
-    "bytestructures.r7.numeric-all.so"
-    "bytestructures.r7.numeric-all.import.so"
-    "bytestructures.r7.numeric-metadata.so"
-    "bytestructures.r7.numeric-metadata.import.so"
-    "bytestructures.r7.numeric.so"
-    "bytestructures.r7.numeric.import.so")
+(install-extension 'bytestructures.numeric
+  '("bytestructures.bytevectors.so"
+    "bytestructures.bytevectors.import.so"
+    "bytestructures.explicit-endianness.so"
+    "bytestructures.explicit-endianness.import.so"
+    "bytestructures.numeric-all.so"
+    "bytestructures.numeric-all.import.so"
+    "bytestructures.numeric-metadata.so"
+    "bytestructures.numeric-metadata.import.so"
+    "bytestructures.numeric.so"
+    "bytestructures.numeric.import.so")
   `((version ,version)))
-(install-extension 'bytestructures.r7.struct
-  '("bytestructures.r7.bitfields.so"
-    "bytestructures.r7.bitfields.import.so"
-    "bytestructures.r7.struct.so"
-    "bytestructures.r7.struct.import.so")
+(install-extension 'bytestructures.struct
+  '("bytestructures.bitfields.so"
+    "bytestructures.bitfields.import.so"
+    "bytestructures.struct.so"
+    "bytestructures.struct.import.so")
   `((version ,version)))
-(install-extension 'bytestructures.r7.union
-  '("bytestructures.r7.union.so"
-    "bytestructures.r7.union.import.so")
+(install-extension 'bytestructures.union
+  '("bytestructures.union.so"
+    "bytestructures.union.import.so")
   `((version ,version)))
-(install-extension 'bytestructures.r7.vector
-  '("bytestructures.r7.vector.so"
-    "bytestructures.r7.vector.import.so")
+(install-extension 'bytestructures.vector
+  '("bytestructures.vector.so"
+    "bytestructures.vector.import.so")
   `((version ,version)))
-(install-extension 'bytestructures.r7
-  '("bytestructures.r7.so"
-    "bytestructures.r7.import.so")
+(install-extension 'bytestructures
+  '("bytestructures.so"
+    "bytestructures.import.so")
   `((version ,version)))
