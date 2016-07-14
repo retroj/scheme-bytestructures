@@ -4,6 +4,8 @@
 
 (use posix)
 
+(include "version.scm")
+
 ;; utils
 
 (compile -s -O3 -J -o bytestructures.utils.so
@@ -100,8 +102,6 @@
 
 (compile -s -O3 bytestructures.import.scm)
 
-
-(define version "0.0.0")
 
 (install-extension 'bytestructures.base
   '("bytestructures.utils.so"
