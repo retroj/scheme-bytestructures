@@ -1,0 +1,5 @@
+;; -*- scheme -*-
+
+(repo git "git://github.com/retroj/scheme-bytestructures.git")
+(uri targz "https://github.com/retroj/scheme-bytestructures/tarball/{egg-release}")
+(release "0.0.1")
