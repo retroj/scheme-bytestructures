@@ -4,7 +4,9 @@
 
 (use posix)
 
-(include "version.scm")
+(include "chicken/version.scm")
+
+(change-directory "chicken")
 
 ;; utils
 
