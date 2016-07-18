@@ -9,4 +9,5 @@
           r6rs-bytevectors
           srfi-60
           format
-          posix))
+          posix)
+ (test-depends srfi-64))
