@@ -12,3 +12,7 @@
 (test-log-to-file (current-error-port))
 
 (include "../run-tests.body.scm")
+
+(if (zero? (test-runner-fail-count (test-runner-get)))
+    (exit 0)
+    (exit 1))
