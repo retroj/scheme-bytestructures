@@ -5,8 +5,8 @@
  (synopsis "Structured access to bytevector contents")
  (license "GPL-3")
  (category data)
- (depends (r7rs 0.0.3)
-          r6rs-bytevectors
+ (depends (r7rs "0.0.5")
+          (r6rs-bytevectors "1.0.2")
           srfi-60
           format
           posix)
