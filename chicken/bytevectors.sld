@@ -1,4 +1,5 @@
 (define-library (bytestructures bytevectors)
+  (import (only (scheme base) quote))
   (cond-expand
    ((library (rnrs bytevectors))
     (import (except (rnrs bytevectors)
