@@ -1,4 +1,5 @@
 (define-library (bytestructures)
+  (import (only (scheme base) quote))
   (import
    (bytestructures base)
    (bytestructures vector)
