@@ -1,2 +1,2 @@
 
-(define version "0.0.5")
+(define version "0.0.6")
